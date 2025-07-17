@@ -17,6 +17,7 @@ const RecipeSection = ({ title, query, isSearch, searchResults }) => {
         const offset = (page - 1) * 10;
         const url = `https://api.spoonacular.com/recipes/complexSearch?${query}&number=10&offset=${offset}&addRecipeInformation=true&apiKey=${API_KEY}`;
         const res = await axios.get(url, { cancelToken: new axios.CancelToken(c => cancel = c) });
+        console.log(res.data)
         setRecipes(res.data.results);
         setTotalResults(res.data.totalResults || 0);
       } catch (err) {
