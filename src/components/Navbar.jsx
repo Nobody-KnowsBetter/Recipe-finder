@@ -15,7 +15,6 @@ const Navbar = ({ user, setUser }) => {
   }, []);
 
   useEffect(() => {
-    // Apply dark mode class to body
     if (darkMode) {
       document.body.classList.add("dark-mode");
     } else {
@@ -226,6 +225,4 @@ const styles = {
   },
 };
 
-// Dropdown show/hide with hover using React state
-// For simplicity, add this small enhancement:
 export default Navbar;

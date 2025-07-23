@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
+import RecipeDetail from "./pages/RecipeDetail";
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/register" element={<Register setUser={setUser} />} />
             <Route path="/favorites" element={user ? <Favorites /> : <Navigate to="/login" />} />
-
+            <Route path="/recipe/:id" element={<RecipeDetail />} /> 
           </Routes>
         </main>
         <Footer />

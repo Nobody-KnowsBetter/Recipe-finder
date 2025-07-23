@@ -3,9 +3,8 @@ import axios from "axios";
 import RecipeCard from "./RecipeCard";
 import Pagination from "./Pagination";
 
-const API_KEY = "YOUR_SPOONACULAR_API_KEY";
 
-const RecipeSection = ({ title, query, isSearch, searchResults }) => {
+const RecipeSection = ({ title, query }) => {
   const [recipes, setRecipes] = useState([]);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
@@ -15,7 +14,7 @@ const RecipeSection = ({ title, query, isSearch, searchResults }) => {
     const fetchRecipes = async () => {
       try {
         const offset = (page - 1) * 10;
-        const url = `https://api.spoonacular.com/recipes/complexSearch?${query}&number=10&offset=${offset}&addRecipeInformation=true&apiKey=${API_KEY}`;
+        const url = `https://api.spoonacular.com/recipes/complexSearch?${query}&number=10&offset=${offset}&addRecipeInformation=true&apiKey=${process.env?.REACT_APP_SPOONACULAR}`;
         const res = await axios.get(url, { cancelToken: new axios.CancelToken(c => cancel = c) });
         console.log(res.data)
         setRecipes(res.data.results);

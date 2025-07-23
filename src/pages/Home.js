@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <div style={{ fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }}>
-      {/* Hero Section */}
+      {}
       <section
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1350&q=80')",
@@ -42,7 +42,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Search Results Section */}
+      {}
       {searchResults ? (
         <RecipeSection
           title={`Search Results for "${decodeURIComponent(searchResults.query.replace("query=", ""))}"`}
@@ -52,65 +52,18 @@ const Home = () => {
         />
       ) : (
         <>
-          {/* Mostly Viewed */}
-          <RecipeSection title="🔥 Mostly Viewed Recipes" query="sort=popularity" />
+          {}
+          <RecipeSection title="Mostly Viewed Recipes" query="sort=popularity" />
 
-          {/* Top Rated */}
-          <RecipeSection title="⭐ Top Rated Recipes" query="sort=healthiness" />
+          {}
+          <RecipeSection title="Top Rated Recipes" query="sort=healthiness" />
 
-          {/* Category Sections */}
-          <div style={{ padding: "0 1rem" }}>
-            <h2 style={{ textAlign: "center", margin: "3rem 0 1rem" }}>
-              Explore by Category
-            </h2>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                gap: "1.5rem",
-              }}
-            >
-              {categories.map((cat) => (
-                <div
-                  key={cat.title}
-                  style={{
-                    flex: "1 1 280px",
-                    maxWidth: 280,
-                    borderRadius: 12,
-                    overflow: "hidden",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                    backgroundColor: "#fff",
-                    cursor: "pointer",
-                    transition: "transform 0.3s ease",
-                  }}
-                  onClick={() => setSearchResults({ query: cat.query })}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "scale(1.05)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "scale(1)";
-                  }}
-                >
-                  <img
-                    src={`https://source.unsplash.com/featured/?${cat.title},food`}
-                    alt={cat.title}
-                    style={{ width: "100%", height: 160, objectFit: "cover" }}
-                  />
-                  <div style={{ padding: "1rem", textAlign: "center" }}>
-                    <h3 style={{ margin: 0, color: "#333" }}>{cat.title}</h3>
-                    <p style={{ color: "#666", fontSize: "0.9rem", marginTop: 4 }}>
-                      Click to explore {cat.title.toLowerCase()} recipes
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          {}
+          {}
         </>
       )}
 
-      {/* Footer spacing */}
+      {}
       <div style={{ height: 60 }} />
     </div>
   );

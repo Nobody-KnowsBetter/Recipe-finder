@@ -47,7 +47,7 @@ const Login = ({ setUser }) => {
               style={styles.showPassBtn}
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
-              {showPassword ? "🙈" : "👁️"}
+              {showPassword ? "" : ""}
             </button>
           </div>
 

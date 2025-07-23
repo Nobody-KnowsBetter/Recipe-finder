@@ -29,12 +29,10 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Profile dropdown show on hover */
 nav div[style*="profileDropdown"]:hover > div {
   display: block !important;
 }
 
-/* Responsive menu button */
 @media (max-width: 768px) {
   nav button[aria-label="Toggle menu"] {
     display: block !important;
