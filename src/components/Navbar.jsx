@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import CameraSearch from "./CameraSearch";
 
 const Navbar = ({ user, setUser }) => {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const Navbar = ({ user, setUser }) => {
     <nav style={styles.nav}>
       <div style={styles.logoSection}>
         <Link to="/" style={styles.logo}>
-          🍽️ RecipeFinder
+          🍽️ Recipify
         </Link>
         <button
           style={styles.menuButton}
@@ -62,6 +63,7 @@ const Navbar = ({ user, setUser }) => {
           />
           <button type="submit" style={styles.searchButton}>🔍</button>
         </form>
+        <CameraSearch />
 
         {user ? (
           <>
@@ -104,7 +106,8 @@ const Navbar = ({ user, setUser }) => {
 
 const styles = {
   nav: {
-    background: "#333",
+    background: "rgba(20, 10, 30, 0.9)", // Dark violet glass
+    backdropFilter: "blur(10px)",
     color: "#fff",
     padding: "0.75rem 1rem",
     display: "flex",
@@ -114,6 +117,7 @@ const styles = {
     position: "sticky",
     top: 0,
     zIndex: 1000,
+    borderBottom: "1px solid rgba(255,255,255,0.1)"
   },
   logoSection: {
     display: "flex",
@@ -138,6 +142,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     gap: "1rem",
+    width: "auto"
   },
   navLinksOpen: {
     display: "block",

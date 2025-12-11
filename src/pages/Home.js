@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import RecipeSection from "../components/RecipeSection";
 
@@ -14,10 +15,19 @@ const categories = [
 
 const Home = () => {
   const [searchResults, setSearchResults] = useState(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const search = params.get("search");
+    if (search) {
+      setSearchResults({ query: `query=${search}` });
+    }
+  }, [location.search]);
 
   return (
     <div style={{ fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }}>
-      {}
+      { }
       <section
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1350&q=80')",
@@ -29,6 +39,10 @@ const Home = () => {
           borderRadius: "0 0 50% 50% / 20% 20% 80% 80%",
           boxShadow: "inset 0 0 0 1000px rgba(0,0,0,0.5)",
           marginBottom: "3rem",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center"
         }}
       >
         <h1 style={{ fontSize: "3rem", marginBottom: "1rem", fontWeight: "900", textShadow: "2px 2px 6px rgba(0,0,0,0.7)" }}>
@@ -42,7 +56,7 @@ const Home = () => {
         </div>
       </section>
 
-      {}
+      { }
       {searchResults ? (
         <RecipeSection
           title={`Search Results for "${decodeURIComponent(searchResults.query.replace("query=", ""))}"`}
@@ -52,18 +66,18 @@ const Home = () => {
         />
       ) : (
         <>
-          {}
+          { }
           <RecipeSection title="Mostly Viewed Recipes" query="sort=popularity" />
 
-          {}
+          { }
           <RecipeSection title="Top Rated Recipes" query="sort=healthiness" />
 
-          {}
-          {}
+          { }
+          { }
         </>
       )}
 
-      {}
+      { }
       <div style={{ height: 60 }} />
     </div>
   );
