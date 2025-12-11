@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import API_BASE_URL from "../config";
 
 const Login = ({ setUser }) => {
   const [username, setUsername] = useState("");
@@ -12,13 +13,15 @@ const Login = ({ setUser }) => {
     e.preventDefault();
     setError("");
     try {
-      // Use local server URL, assuming proxy or direct CORS
-      const res = await axios.post("http://localhost:5000/api/auth/login", { username, password });
+      // Use configured API URL
+      const res = await axios.post(`${API_BASE_URL}/api/auth/login`, { username, password });
       setUser(res.data);
       localStorage.setItem("user", JSON.stringify(res.data)); // Persist login
       navigate("/");
     } catch (err) {
-      setError(err.response?.data || "Something went wrong!");
+      console.error(err);
+      const errorMessage = err.response?.data || err.message || "Something went wrong!";
+      setError(errorMessage);
     }
   };
 
@@ -117,7 +120,9 @@ const styles = {
     color: "#fff",
     outline: "none",
     width: "100%",
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    background: "rgba(0, 0, 0, 0.4)", // Darker background for better contrast
+    color: "white"
   },
   submitBtn: {
     backgroundColor: "#6d28d9", // Violet button

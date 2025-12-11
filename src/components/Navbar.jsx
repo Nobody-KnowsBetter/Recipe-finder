@@ -154,17 +154,21 @@ const styles = {
     alignItems: "center",
   },
   searchInput: {
-    padding: "0.3rem 0.5rem",
-    borderRadius: "4px 0 0 4px",
-    border: "none",
+    padding: "0.5rem 0.8rem",
+    borderRadius: "20px 0 0 20px",
+    border: "1px solid rgba(255,255,255,0.2)",
     fontSize: "1rem",
+    background: "rgba(255,255,255,0.1)",
+    color: "white",
+    outline: "none"
   },
   searchButton: {
-    padding: "0.3rem 0.6rem",
-    borderRadius: "0 4px 4px 0",
-    border: "none",
+    padding: "0.5rem 1rem",
+    borderRadius: "0 20px 20px 0",
+    border: "1px solid rgba(255,255,255,0.2)",
+    borderLeft: "none",
     cursor: "pointer",
-    backgroundColor: "#ff6f61",
+    backgroundColor: "rgba(255,255,255,0.1)",
     color: "#fff",
   },
   favoritesLink: {

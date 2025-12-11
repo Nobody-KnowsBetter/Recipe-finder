@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import RecipeCard from "../components/RecipeCard";
+import API_BASE_URL from "../config";
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -14,7 +15,7 @@ const Favorites = () => {
         const user = JSON.parse(localStorage.getItem("user"));
         if (!user?.token) return;
 
-        const res = await axios.get("http://localhost:5000/api/favorites", {
+        const res = await axios.get(`${API_BASE_URL}/api/favorites`, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setFavorites(res.data);

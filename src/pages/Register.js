@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_BASE_URL from "../config";
 
-const Register = ({ setUser }) => {
+const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,8 +14,8 @@ const Register = ({ setUser }) => {
     e.preventDefault();
     setError("");
     try {
-      // Direct call to local server
-      const res = await axios.post("http://localhost:5000/api/auth/register", {
+      // Use configured API URL
+      const res = await axios.post(`${API_BASE_URL}/api/auth/register`, {
         username,
         email,
         password,
@@ -22,7 +23,9 @@ const Register = ({ setUser }) => {
       // Automatically log them in or ask to login. Let's redirect to login.
       navigate("/login");
     } catch (err) {
-      setError(err.response?.data || "Something went wrong!");
+      console.error(err);
+      const errorMessage = err.response?.data || err.message || "Something went wrong!";
+      setError(errorMessage);
     }
   };
 
@@ -130,7 +133,9 @@ const styles = {
     color: "#fff",
     outline: "none",
     width: "100%",
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    background: "rgba(0, 0, 0, 0.4)",
+    color: "white"
   },
   submitBtn: {
     backgroundColor: "#6d28d9",

@@ -1,26 +1,27 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from "../config";
 
 const CameraSearch = () => {
-    const fileInputRef = useRef(null);
-    const [loading, setLoading] = useState(false);
+    const [uploading, setUploading] = useState(false);
     const navigate = useNavigate();
+    const fileInputRef = useRef(null);
 
     const handleCameraClick = () => {
         fileInputRef.current.click();
     };
 
-    const handleFileChange = async (e) => {
+    const handleImageUpload = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
 
-        setLoading(true);
+        setUploading(true);
         const formData = new FormData();
         formData.append('image', file);
 
         try {
-            const res = await axios.post('http://localhost:5000/api/ai/identify-food', formData, {
+            const res = await axios.post(`${API_BASE_URL}/api/ai/identify-food`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
             const dishName = res.data.dishName;
@@ -30,7 +31,7 @@ const CameraSearch = () => {
             console.error("AI Search Failed", err);
             alert("Could not identify dish. Please try again.");
         } finally {
-            setLoading(false);
+            setUploading(false);
         }
     };
 
@@ -42,14 +43,14 @@ const CameraSearch = () => {
                 capture="environment"
                 ref={fileInputRef}
                 style={{ display: 'none' }}
-                onChange={handleFileChange}
+                onChange={handleImageUpload}
             />
             <button
                 onClick={handleCameraClick}
                 style={styles.button}
                 title="Search by Camera"
             >
-                {loading ? 'Analyzing...' : '📷 AI Camera'}
+                {uploading ? 'Analyzing...' : '📷 AI Camera'}
             </button>
         </div>
     );

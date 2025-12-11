@@ -1,25 +1,59 @@
-body.dark-mode {
-  background-color: #121212;
-  color: #e0e0e0;
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #0f0518 0%, #1a0b2e 100%);
+  /* Deep Violet-Black */
+  color: #e0d0f5;
+  min-height: 100vh;
 }
 
-body.dark-mode nav {
-  background-color: #222;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-body.dark-mode input,
-body.dark-mode button {
-  background-color: #333;
-  color: #eee;
-  border-color: #555;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Great Vibes', cursive;
+  color: #d8b4fe;
 }
 
-body.dark-mode a {
-  color: #bb86fc;
+/* Global Input Styles for Visibility */
+input,
+textarea,
+select {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  font-family: 'Poppins', sans-serif;
 }
 
-body.dark-mode .recipe-card {
-  background-color: #1e1e1e;
-  color: #ddd;
-  box-shadow: 0 2px 8px rgba(255 255 255 / 0.1);
+input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Dark scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0518;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3d2c5e;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5b428f;
 }

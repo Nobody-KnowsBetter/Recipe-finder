@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import API_BASE_URL from "../config";
 
 const RecipeCard = ({ recipe }) => {
   const [favorite, setFavorite] = useState(false);
@@ -33,7 +34,7 @@ const RecipeCard = ({ recipe }) => {
     try {
       if (favorite) {
         // Remove
-        await axios.delete(`http://localhost:5000/api/favorites/${recipe.id}`, {
+        await axios.delete(`${API_BASE_URL}/api/favorites/${recipe.id}`, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setFavorite(false);
@@ -46,7 +47,7 @@ const RecipeCard = ({ recipe }) => {
           image: recipe.image,
           // Add other fields if available in 'recipe' prop
         };
-        await axios.post("http://localhost:5000/api/favorites", newFav, {
+        await axios.post(`${API_BASE_URL}/api/favorites`, newFav, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         setFavorite(true);
